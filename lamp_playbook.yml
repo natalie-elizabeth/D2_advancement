@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  sudo: true
+  gather_facts: false
+  roles:
+          - apache
+          - php
+          - mysql
+          - wordpress
+

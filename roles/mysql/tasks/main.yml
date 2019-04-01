@@ -1,0 +1,20 @@
+---
+- name: Install mysql
+  sudo: true
+  apt: pkg={{ item }} state=present
+  with_items:
+          - mysql-server
+          - python-mysqldb
+
+- name: Check if mysql is started
+  become: yes
+  service: name=mysql state=started enabled=yes
+
+- name: Create mysql database
+  mysql_db: name={{ wp_mysql_db }} state=present
+
+- name: Create mysql user
+  mysql_user:
+    name={{ wp_mysql_user }}
+    password={{ wp_mysql_password }}
+    priv=*.*:ALL

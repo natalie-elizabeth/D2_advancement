@@ -1,0 +1,12 @@
+---
+- name: Install php with extensions
+  sudo: true
+  apt: pkg={{ item }} state=present
+  with_items:
+          - php
+          - php-mysql
+          - libapache2-mod-php
+          - php-curl
+          - php-gd
+          - php-xml
+          - php-zip
